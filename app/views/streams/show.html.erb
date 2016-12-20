@@ -1,55 +1,5 @@
 <br>
 <%= javascript_include_tag "//static.opentok.com/webrtc/v2.2/js/TB.min.js" %>
-<script>
-function printMessage(message) {
-  $('#messages').append(message + "<br>");
-}
-
-$(function() {
-    var chatChannel;
-    var username;
-
-    function setupChannel() {
-        chatChannel.join().then(function(channel) {
-            printMessage(username + ' joined the chat.');
-        });
-
-        chatChannel.on('messageAdded', function(message) {
-            printMessage(message.author + ": " + message.body);
-         });
-    }
-
-    var $input = $('#chat-input'); 
-    $input.on('keydown', function(e) {
-        if (e.keyCode == 13) {
-            chatChannel.sendMessage($input.val())
-            $input.val('');
-        }
-     });
-
-    $.post("/tokens", function(data) {
-    username = data.username;
-    var accessManager = new Twilio.AccessManager(data.token);
-    var messagingClient = new Twilio.IPMessaging.Client(accessManager);
-
-    messagingClient.getChannelByUniqueName('chat').then(function(channel) {
-        if (channel) {
-            chatChannel = channel;
-            setupChannel();
-        } else {
-            messagingClient.createChannel({
-                uniqueName: 'chat',
-                friendlyName: 'Chat Channel' })
-            .then(function(channel) {
-                chatChannel = channel;
-                setupChannel();
-            });
-        }
-    });
-});
-
-});
-</script>
 <div class="col-lg-12 col-sm-12 videobox">
 <table>
 <tr><td rowspan="2" class="col-lg-3 col-sm-3 videotable">
@@ -78,8 +28,10 @@ $(function() {
 
   <div align="center">
   <h1>HELLO! <span class="glyphicon glyphicon-comment"></span></h1>
-  <div id="messages"></div><br>
-   <input id="chat-input" class="form-control" type="text" placeholder="Your message goes here..." autofocus/></div></td>
+    <div id="messages"></div>
+   <input id="chat-input" class="form-control" type="text" placeholder="say anything" autofocus/>
+ </div>
+</div></div></td>
  <tr>
  <td class="col-lg-6 col-sm-6">
     <div class="col-lg-2 col-sm-2"><img src="http://i452.photobucket.com/albums/qq244/missnpk93/speaker_zpsnrfdpnzl.png" width="85px" height="85px"></div>
