@@ -1,0 +1,43 @@
+// Place all the styles related to the featured controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#feature-background { 
+    background-image: url('/assets/images/bg-2-full.jpg');
+    color: white;
+}
+
+
+.list-group {
+    color: black;
+    max-width: 300px;
+}
+
+.col-md-9 .well {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(7, 12, 46, .3);
+    text-align: center
+}
+
+
+
+.carousel-inner.onebyone-carosel { margin: auto; width: 80%; }
+.onebyone-carosel .active.left { left: -33.33%; }
+.onebyone-carosel .active.right { left: 33.33%; }
+.onebyone-carosel .next { left: 33.33%; }
+.onebyone-carosel .prev { left: -33.33%; }
+
+.text-center {
+    color: white;
+}
+
+#somewhereincode {
+    padding: 0px;
+}
+
+.row {
+    width: 100%;
+}
+
